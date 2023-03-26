@@ -11,7 +11,7 @@ const employeeSchema=mongoose.Schema({
         type:String,
         require:[true,"Please enter Password"],
       
-        minLength:[6,"Password must be atleast 6 characters."]
+        minLength:[5,"Password must be atleast 5 characters."]
     }
 })
 
