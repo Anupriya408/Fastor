@@ -7,7 +7,7 @@ const authorisation=asyncHandler(async (req,res,next)=>{
         const token = req.headers?.auth?.split(" ")[1]
         if(!token){
             res.status(404)
-            throw new Error("Not authorized, Please login")
+            throw new Error("Not authorized,Again Please login")
         }
     
         const verified=jwt.verify(token,process.env.JWT_SECRET)
@@ -17,14 +17,14 @@ const authorisation=asyncHandler(async (req,res,next)=>{
     
         if(!employee){
             res.status(404)
-            throw new Error("employee not found...")
+            throw new Error("employee not found.")
         }
         req.employee=employee
         next()
     
     } catch (err){
         res.status(404)
-        throw new Error("Not authorized, Please login")
+        throw new Error("Please login")
     }
     })
 

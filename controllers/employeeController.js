@@ -13,8 +13,8 @@ const registerEmployee=asyncHandler(
         if(!email || !password){
             res.status(400).json({message:"Please fill all the fields",status:"400"})
         }
-        if(password.length<6){
-            res.status(400).json({message:"Password must be 6 characters",status:"400"})
+        if(password.length<5){
+            res.status(400).json({message:"Password must be 5 characters",status:"400"})
         }
         const employeeExists=await Employee.findOne({email})
         if(employeeExists){

@@ -10,7 +10,7 @@ app.use(cors())
 
 
 app.get("/",(req,res)=>{
-    res.send("home page")
+    res.send(" it's Home page ...")
 })
 
 app.use("/Employee",employeeRouter)
