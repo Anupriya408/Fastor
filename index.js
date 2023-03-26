@@ -1,23 +1,26 @@
 const express=require("express")
-const dotenv=require("dotenv").config()
 const cors=require("cors")
 const connect = require('./db/connect');
-const employeeRouter=require("./routes/employeeRouter")
-const formRouter=require("./routes/formRouter")
+const employeeRouter=require("./routes/employeeRoute")
+const formRouter=require("./routes/formRoute")
 const app=express()
 
 app.use(express.json())
 app.use(cors())
-const PORT=process.env.PORT || 3000
+
 
 app.get("/",(req,res)=>{
-    res.send("home")
+    res.send("home page")
 })
 
-app.use("/api",employeeRouter)
-app.use("/api",formRouter)
+app.use("/Employee",employeeRouter)
+app.use("/Form",formRouter)
 
-app.listen(PORT,async()=>{
-    await connect()
-    console.log(`http://localhost:${PORT}`)
+
+
+connect()
+.then(() => {
+    app.listen(3000, () => {
+        console.log('Server listening at http://localhost:3000')
+    });
 })
